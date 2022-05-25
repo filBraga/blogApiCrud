@@ -20,4 +20,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'BlogPosts',
   });
   return BlogPosts;
-};
+}; 
