@@ -1,11 +1,11 @@
 const login = require('./database/controllers/login');
-// const getPosts = require('../controllers/posts');
+const user = require('./database/controllers/user');
 // const createUsers = require('../controllers/createUser');
 // const getUsers = require('../controllers/getUsers');
 
 module.exports = {
   login,
-  // getPosts,
+  user,
   // createUsers,
   // getUsers,
 };
