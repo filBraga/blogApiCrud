@@ -22,6 +22,7 @@ apiRoutes.post('/login', routes.login);
 
 apiRoutes.post('/user', validateUser, routes.createUser);
 apiRoutes.get('/user', authToken, routes.getUsers);
+apiRoutes.get('/user/:id', authToken, routes.getUsersById);
 
 app.use(apiRoutes);
 app.listen(port, () => console.log('ouvindo porta', port));

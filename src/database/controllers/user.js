@@ -49,7 +49,20 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getUsersById = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findOne({
+      where: { id: userId },
+    });
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   createUser,
   getUsers,
+  getUsersById,
 }; 
