@@ -12,19 +12,12 @@ const validateBody = (body, res) => {
   return true;
 };
 
-// const isIdUnique = (email) => {
-//   const userEmailFind = User.findOne({ where: { email } });
-//   return userEmailFind;
-// };
-
-module.exports = async (req, res) => {
+const createUser = async (req, res) => {
   try {
     const { displayName, email, password, image } = req.body;
 
     if (!validateBody(req.body, res)) return;
 
-    // const logging = await isIdUnique(email);
-    // console.log(logging);
     const user = await User.findOne({ where: { email } });
     // check if exist user
     if (user !== null) {
@@ -42,3 +35,21 @@ module.exports = async (req, res) => {
     return res.status(400).json({ message: 'Invalid fields', error: err.message });
   }
 };
+
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.findAll({
+      attributes: {
+          exclude: ['password'],
+      },
+  });
+    return res.status(200).json(users);
+  } catch (err) {
+    return res.status(400).json({ message: 'Expired or invalid token' });
+  }
+};
+
+module.exports = {
+  createUser,
+  getUsers,
+}; 
