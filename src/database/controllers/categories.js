@@ -34,6 +34,16 @@ const createCategory = async (req, res) => {
   }
 };
 
+const getCategories = async (req, res) => {
+  try {
+    const categories = await Category.findAll();
+    return res.status(200).json(categories);
+  } catch (err) {
+    return res.status(400).json({ message: 'Expired or invalid token' });
+  }
+};
+
 module.exports = {
   createCategory,
+  getCategories,
 }; 
