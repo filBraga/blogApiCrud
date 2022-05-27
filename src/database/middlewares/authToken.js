@@ -11,7 +11,7 @@ const authToken = async (req, res, next) => {
       return res.status(401).json({ message: 'Token not found' });
     }
     const decoded = jwt.verify(token, JWT_SECRET);
-    console.log(decoded);
+    // console.log(decoded);
     const userIsValid = await User.findOne({ where: { email: decoded.data.email } });
     
     if (!userIsValid) {

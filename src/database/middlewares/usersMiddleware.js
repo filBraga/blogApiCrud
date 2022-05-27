@@ -12,7 +12,7 @@ const validateUser = (req, res, next) => {
 
   if (!error) return next();
 
-  console.log(error.details[0].type);
+  // console.log(error.details[0].type);
   return res.status(400).json({ message: error.details[0].message });
 };
 

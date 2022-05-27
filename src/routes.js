@@ -1,4 +1,5 @@
 const login = require('./database/controllers/login');
+const { createCategory } = require('./database/controllers/categories');
 const { 
   createUser,
   getUsers,
@@ -7,6 +8,7 @@ const {
 
 module.exports = {
   login,
+  createCategory,
   createUser,
   getUsers,
   getUsersById,

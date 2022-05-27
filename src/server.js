@@ -20,6 +20,8 @@ const apiRoutes = express.Router();
 
 apiRoutes.post('/login', routes.login);
 
+apiRoutes.post('/categories', authToken, routes.createCategory);
+
 apiRoutes.post('/user', validateUser, routes.createUser);
 apiRoutes.get('/user', authToken, routes.getUsers);
 apiRoutes.get('/user/:id', authToken, routes.getUsersById);
