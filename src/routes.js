@@ -1,5 +1,5 @@
 const login = require('./database/controllers/login');
-const { createPost } = require('./database/controllers/post');
+const { createPost } = require('./database/controllers/postController');
 const { createCategory, getCategories } = require('./database/controllers/categories');
 const { 
   createUser,

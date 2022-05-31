@@ -3,9 +3,12 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = require('./api');
 const routes = require('./routes');
+
+const middlewares = require('./database/middlewares/validateBody');
+const authToken = require('./database/middlewares/authToken');
+
 const validateUser = require('./database/middlewares/usersMiddleware');
 // const validatePost = require('./database/middlewares/validatePost');
-const authToken = require('./database/middlewares/authToken');
 
 // não remova a variável `API_PORT` ou o `listen`
 const port = process.env.API_PORT || 3000;
@@ -28,7 +31,7 @@ apiRoutes.post('/user', validateUser, routes.createUser);
 apiRoutes.get('/user', authToken, routes.getUsers);
 apiRoutes.get('/user/:id', authToken, routes.getUsersById);
 
-apiRoutes.post('/post', authToken, routes.createPost);
+apiRoutes.post('/post', authToken, middlewares.isValidPost, routes.createPost);
 
 app.use(apiRoutes);
 app.listen(port, () => console.log('ouvindo porta', port));
